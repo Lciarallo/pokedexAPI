@@ -22,7 +22,6 @@ function convertPokemonHTMl(pokemon, info) {
     for (let i = 0; i < info.types.length; i++) {
         tags.push(`<p class="tag">${info.types[i].type.name || ""}</p>`)
     }
-    // console.log(tags.join(' '))
 
 
     let data = `
@@ -47,7 +46,7 @@ fetch(url).then((response) => {
 })
     .then((jsonBody) => jsonBody.results)
     .then(async (listaPokemon) => {
-        listpokemon = document.getElementsByClassName('listPokemon')
+        listpokemon = document.getElementById('listPokemon')
 
         for (i = 0; i < limit; i++) {
             const pokemon = listaPokemon[i]
@@ -55,7 +54,7 @@ fetch(url).then((response) => {
 
             if (info) {
 
-                listaPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
+                listPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
 
             }
             else {
@@ -63,7 +62,7 @@ fetch(url).then((response) => {
             }
 
 
-
         }
-        console.log(listaPokemon.innerHTML)
+        
+
     })

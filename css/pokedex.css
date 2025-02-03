@@ -62,7 +62,7 @@ h1 {
   margin-top: 0.5rem;
 }
 
-.listPokemon {
+#listPokemon {
   flex-wrap: wrap;
   display: flex;
   padding-left: 1rem;
