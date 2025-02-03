@@ -31,6 +31,8 @@ h1 {
   margin: 5px;
   display: inline;
   background-color: #64c374;
+  height: auto;
+
 
 }
 
@@ -46,6 +48,7 @@ h1 {
   float: right;
   margin: 0 0 10px 10px;
   background-color: #64c374;
+
 }
 
 .tag {

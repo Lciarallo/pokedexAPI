@@ -19,6 +19,8 @@ async function selectPoke(pokemon) {
 function convertPokemonHTMl(pokemon, info) {
     let tags = [];
 
+    const img = info.sprites.other.dream_world.front_default
+
     for (let i = 0; i < info.types.length; i++) {
         tags.push(`<p class="tag">${info.types[i].type.name || ""}</p>`)
     }
@@ -27,7 +29,7 @@ function convertPokemonHTMl(pokemon, info) {
     let data = `
         <div class="cardPokemon">
             <h2 class="name">${pokemon.name}</h2>
-            <img class="img" src="/img/Bulbasaur.png" alt="" style="width: 100px;">
+            <img class="img" src="${img}" alt="" style="width: 100px">
             
             ${tags.join('\n')}
         </div>
