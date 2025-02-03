@@ -48,7 +48,7 @@ fetch(url).then((response) => {
 })
     .then((jsonBody) => jsonBody.results)
     .then(async (listaPokemon) => {
-        listpokemon = document.getElementById('listPokemon')
+        sectionPokemon = document.getElementById('sectionPokemon')
 
         for (i = 0; i < limit; i++) {
             const pokemon = listaPokemon[i]
@@ -56,7 +56,7 @@ fetch(url).then((response) => {
 
             if (info) {
 
-                listPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
+                sectionPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
 
             }
             else {
