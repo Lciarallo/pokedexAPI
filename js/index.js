@@ -9,7 +9,7 @@ async function selectPoke(pokemon) {
     try {
         const response = await fetch(selectURL);
         const jsonBody = await response.json();
-       
+
         return jsonBody
     } catch (error) {
         console.error("Erro ao buscar os dados:", error);
@@ -17,19 +17,27 @@ async function selectPoke(pokemon) {
 }
 
 function convertPokemonHTMl(pokemon, info) {
-    
+    let tags = [];
 
-    return `    <div class="cardPokemon">
-                <h2 class='name'>
-                    ${pokemon.name}
-                </h2>
-                <img class="img" src="/img/Bulbasaur.png" alt="" style="width: 100px; ">
+    for (let i = 0; i < info.types.length; i++) {
+        tags.push(`<p class="tag">${info.types[i].type.name || ""}</p>`)
+    }
+    // console.log(tags.join(' '))
 
-                <p class="tag">${info.id}</p>
-                <p class="tag">Teste</p>
 
-            </div>`
+    let data = `
+        <div class="cardPokemon">
+            <h2 class="name">${pokemon.name}</h2>
+            <img class="img" src="/img/Bulbasaur.png" alt="" style="width: 100px;">
+            
+            ${tags.join('\n')}
+        </div>
+    `;
+
+
+    return data;
 }
+
 
 
 
@@ -45,13 +53,17 @@ fetch(url).then((response) => {
             const pokemon = listaPokemon[i]
             const info = await selectPoke(pokemon)
 
-            if(info){
+            if (info) {
 
                 listaPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
-                console.log(listaPokemon.innerHTML)
+
             }
-            
+            else {
+                console.log("Pokemon não encontrado")
+            }
+
 
 
         }
+        console.log(listaPokemon.innerHTML)
     })
