@@ -14,7 +14,7 @@ async function selectPoke(pokemon) {
     }
 }
 
-function convertPokemonHTMl(pokemon, info) {
+function convertPokemonHTMl(pokemon, info, index) {
     let tags = [];
 
     const img = info.sprites.other.dream_world.front_default
@@ -25,7 +25,7 @@ function convertPokemonHTMl(pokemon, info) {
 
 
     let data = `
-        <div class="cardPokemon">
+        <div class="cardPokemon" style="--index: ${index}>
             <h2 class="name">${pokemon.name}</h2>
             <img class="img" src="${img}" alt="" style="width: 100px">
             
@@ -38,7 +38,7 @@ function convertPokemonHTMl(pokemon, info) {
 }
 
 
-async function  APILoad(offset,limit) {
+async function APILoad(offset,limit) {
     let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
     console.log(url)
     await fetch(url).then((response) => {
@@ -55,7 +55,7 @@ async function  APILoad(offset,limit) {
 
                 if (info) {
 
-                    sectionPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
+                    sectionPokemon.innerHTML += convertPokemonHTMl(pokemon, info, i)
                      
 
                 }
@@ -92,6 +92,9 @@ async function movePage(limit, next) {
             offset += limit
         }else if(offset >= 20 && next == false){
             offset -= limit
+            if(0 > offset){
+                offset = 0
+            }
         }
         
 
@@ -102,12 +105,13 @@ async function movePage(limit, next) {
 }
 
 
-async function changeLimit(offset) {
+async function changeLimit() {
     deleteCards()
     limit = Number(document.getElementById('options').value)
     APILoad(offset,limit)
     
 }
+
 
 
 window.onload =  () => {
