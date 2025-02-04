@@ -1,92 +1,291 @@
 * {
   font-family: "Roboto", sans-serif;
-  background-color: rgb(241, 235, 227);
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
 
+body {
+  background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
+  min-height: 100vh;
 }
 
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: 50px;
-  background-color: white;
-  padding: 0 10px;
+  height: 60px;
+  background: #ffffff;
+  padding: 0 20px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
 }
 
 h1 {
-  padding-bottom: 40px;
-  font-size: 40px;
-  font-weight: bold;
-  margin-left: 1.5rem;
+  padding: 30px 0;
+  font-size: 2.5rem;
+  font-weight: 900;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #333;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+  justify-content: center;
+  margin: 0 auto;
+  width: fit-content;
+}
 
+#sectionPokemon {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 0 1.5rem 2rem;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .cardPokemon {
   width: 15rem;
-  height: 10rem;
-  border-radius: 13px;
-  border: 2px solid #000;
-  margin: 5px;
-  display: inline;
-  background-color: #64c374;
-
+  border-radius: 15px;
+  background: linear-gradient(160deg, #64c374 0%, #4caa5b 100%);
+  height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  border: none;
+  flex-shrink: 0;
+  padding: 15px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  animation: fadeInUp 0.6s ease-out forwards;
+  animation-delay: calc(var(--index) * 0.1s);
+  will-change: transform, opacity;
 }
 
-.cardPokemon h2{
-  background-color: #64c374;
+.cardPokemon:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+}
+
+.cardPokemon h2 {
   color: white;
-  border-radius: 13px;
-
-
+  padding: 15px;
+  font-size: 1.5rem;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+  margin: 0;
+  align-self: flex-start;
 }
 
 .cardPokemon img {
-  float: right;
-  margin: 0 0 10px 10px;
-  background-color: #64c374;
+  width: 120px;
+  height: 120px;
+  margin: -30px 10px 0 auto;
+  filter: drop-shadow(3px 5px 2px rgba(0,0,0,0.2));
+  transition: transform 0.3s ease;
+  z-index: 1;
+}
+
+.cardPokemon:hover img {
+  transform: scale(1.05) rotate(5deg);
 }
 
 .tag {
-  background: rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  backdrop-filter: blur(4.5px);
-  -webkit-backdrop-filter: blur(4.5px);
-  border-radius: 10px;
-  border: 1px solid rgba(255, 255, 255, 0.18);
-  width: 3rem;
-  text-align: center;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 10px;
+  display: inline-block;
   color: white;
-  margin-left: 0.4rem;
-  margin-top: 0.5rem;
+  font-weight: 500;
+  font-size: 0.9rem;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255,255,255,0.3);
+  align-self: flex-start;
 }
 
-.listPokemon {
-  flex-wrap: wrap;
+#pagesnav {
   display: flex;
-  padding-left: 1rem;
-  padding-right: 0;
-  padding-right: auto;
+  justify-content: center;
+  gap: 2rem;
+  padding: 2rem 0;
+  position: relative;
 }
 
-
-nav {
-  display: flex;
+.bi-arrow-left-square-fill,
+.bi-arrow-right-square-fill {
+  color: #ff4444 !important;
+  transition: all 0.3s ease;
+  background: transparent !important;
+  border: none;
 }
 
-@media (min-width: 768px) {
-  .listPokemon {
-    justify-content: flex-start; /* Alinha itens à esquerda em telas maiores */
+.bi-arrow-left-square-fill:hover,
+.bi-arrow-right-square-fill:hover {
+  transform: scale(1.1);
+  filter: brightness(1.2);
+}
+
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2rem;
+    padding: 20px 0;
+  }
+  
+  .cardPokemon {
+    width: calc(50% - 20px);
+    margin: 5px;
+  }
+
+  .cardPokemon img {
+    width: 100px;
+    height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.8rem;
+    gap: 10px;
   }
 
   .cardPokemon {
-    width: calc(25% + 10px); /* 4 cards por linha em telas maiores */
+    width: 100%;
+    max-width: 300px;
+  }
+
+  #sectionPokemon {
+    padding: 0 1rem 2rem;
+    gap: 15px;
+  }
+
+  .bi-arrow-left,
+  .bi-list {
+    font-size: 2rem !important;
   }
 }
 
-@media (min-width: 1024px) {
+@media (max-width: 480px) {
+  nav {
+    height: 50px;
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  h1 img {
+    width: 28px;
+  }
+
+  #sectionPokemon {
+    padding: 0 10px 1.5rem;
+    gap: 10px;
+  }
+
   .cardPokemon {
-    width: calc(20% - 20px); /* 5 cards por linha em telas maiores */
+    width: 100%;
+    max-width: 280px;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .cardPokemon h2 {
+    font-size: 1.3rem;
+    padding: 10px;
+  }
+
+  .cardPokemon img {
+    width: 90px;
+    height: 90px;
+    margin: -25px 5px 0 auto;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    margin: 8px;
+  }
+
+  #pagesnav {
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .bi-arrow-left-square-fill,
+  .bi-arrow-right-square-fill {
+    font-size: 2.5rem !important;
+  }
+
+  .bi-arrow-left,
+  .bi-list {
+    font-size: 1.8rem !important;
+  }
+}
+
+.dropdown-container {
+  position: relative;
+  width: 200px;
+}
+
+.dropdown-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f0f0f0;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background: #f8f8f8;
+}
+
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .cardPokemon {
+    max-width: 250px;
+  }
+
+  .cardPokemon img {
+    width: 80px;
+    height: 80px;
   }
 }
