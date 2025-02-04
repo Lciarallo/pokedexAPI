@@ -162,3 +162,116 @@ h1 {
     font-size: 2rem !important;
   }
 }
+
+@media (max-width: 480px) {
+  nav {
+    height: 50px;
+    padding: 0 10px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+    padding: 20px 0;
+    gap: 10px;
+  }
+
+  h1 img {
+    width: 28px;
+  }
+
+  #sectionPokemon {
+    padding: 0 10px 1.5rem;
+    gap: 10px;
+  }
+
+  .cardPokemon {
+    width: 100%;
+    max-width: 280px;
+    margin: 0;
+    padding: 10px;
+  }
+
+  .cardPokemon h2 {
+    font-size: 1.3rem;
+    padding: 10px;
+  }
+
+  .cardPokemon img {
+    width: 90px;
+    height: 90px;
+    margin: -25px 5px 0 auto;
+  }
+
+  .tag {
+    font-size: 0.8rem;
+    padding: 4px 10px;
+    margin: 8px;
+  }
+
+  #pagesnav {
+    gap: 1.5rem;
+    padding: 1.5rem 0;
+  }
+
+  .bi-arrow-left-square-fill,
+  .bi-arrow-right-square-fill {
+    font-size: 2.5rem !important;
+  }
+
+  .bi-arrow-left,
+  .bi-list {
+    font-size: 1.8rem !important;
+  }
+}
+
+.dropdown-container {
+  position: relative;
+  width: 200px;
+}
+
+.dropdown-btn {
+  width: 100%;
+  padding: 12px;
+  background: #f0f0f0;
+  border: 2px solid #3498db;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.dropdown-content {
+  display: none; /* Esconde as opções inicialmente */
+  position: absolute;
+  width: 100%;
+  background: white;
+  border: 1px solid #ddd;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.dropdown-container:hover .dropdown-content {
+  display: block; /* Mostra as opções ao passar o mouse */
+}
+
+.dropdown-option {
+  padding: 10px;
+  cursor: pointer;
+}
+
+.dropdown-option:hover {
+  background: #f8f8f8;
+}
+
+/* Ajuste extra para telas muito pequenas (ex: Galaxy Fold) */
+@media (max-width: 360px) {
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  .cardPokemon {
+    max-width: 250px;
+  }
+
+  .cardPokemon img {
+    width: 80px;
+    height: 80px;
+  }
+}

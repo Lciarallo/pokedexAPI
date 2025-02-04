@@ -1,18 +1,16 @@
-
-let offset = 0
+let offset = 0 
 let limit = 20
-const url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+
 
 
 async function selectPoke(pokemon) {
     const selectURL = pokemon.url;
     try {
-        const response = await fetch(selectURL);
-        const jsonBody = await response.json();
-
+        const response = await fetch(selectURL)
+        const jsonBody = await response.json()
         return jsonBody
     } catch (error) {
-        console.error("Erro ao buscar os dados:", error);
+        console.error("Erro ao buscar os dados:", error)
     }
 }
 
@@ -40,31 +38,78 @@ function convertPokemonHTMl(pokemon, info) {
 }
 
 
+async function  APILoad(offset,limit) {
+    let url = `https://pokeapi.co/api/v2/pokemon?offset=${offset}&limit=${limit}`
+    console.log(url)
+    await fetch(url).then((response) => {
 
+        return response.json()
+    })
+        .then((jsonBody) => jsonBody.results)
+        .then(async (listaPokemon) => {
+            sectionPokemon = document.getElementById('sectionPokemon')
 
-fetch(url).then((response) => {
+            for (i = 0; i < limit; i++) {
+                const pokemon = listaPokemon[i]
+                const info = await selectPoke(pokemon)
 
-    return response.json()
-})
-    .then((jsonBody) => jsonBody.results)
-    .then(async (listaPokemon) => {
-        sectionPokemon = document.getElementById('sectionPokemon')
+                if (info) {
 
-        for (i = 0; i < limit; i++) {
-            const pokemon = listaPokemon[i]
-            const info = await selectPoke(pokemon)
+                    sectionPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
+                     
 
-            if (info) {
+                }
+                else {
+                    console.log("Pokemon não encontrado")
+                }
 
-                sectionPokemon.innerHTML += convertPokemonHTMl(pokemon, info)
 
             }
-            else {
-                console.log("Pokemon não encontrado")
-            }
 
 
+        })
+        
+}
+
+
+function deleteCards(){
+    const legacyCards = document.getElementsByClassName('cardPokemon')
+    Array.from(legacyCards).reverse().forEach(card => {
+        card.remove()
+    });
+
+    while (legacyCards.length > 0) {
+        legacyCards[0].remove();
+    }
+}
+
+async function movePage(limit, next) {
+        deleteCards()
+        
+        offset = Number(offset)
+
+        if(next == true){
+            offset += limit
+        }else if(offset >= 20 && next == false){
+            offset -= limit
         }
         
 
-    })
+        
+        APILoad(offset, limit)
+    
+    
+}
+
+
+async function changeLimit(offset) {
+    deleteCards()
+    limit = Number(document.getElementById('options').value)
+    APILoad(offset,limit)
+    
+}
+
+
+window.onload =  () => {
+    APILoad(offset,limit);
+}
