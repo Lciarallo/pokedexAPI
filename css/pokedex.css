@@ -48,7 +48,8 @@ h1 {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(10000px);
+    animation-delay: 1000s;
   }
   to {
     opacity: 1;
