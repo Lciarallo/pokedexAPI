@@ -25,52 +25,52 @@ function convertPokemonHTMl(pokemon, info, index) {
     let backGround
     switch (info.types[0].type.name) {
         case "normal":
-          backGround = "var(--type-normal)";
+          backGround = "var(--type-normal)"
           break;
         case "fire":
-          backGround = "var(--type-fire)";
+          backGround = "var(--type-fire)"
           break;
         case "water":
-          backGround = "var(--type-water)";
+          backGround = "var(--type-water)"
           break;
         case "electric":
-          backGround = "var(--type-electric)";
+          backGround = "var(--type-electric)"
           break;
         case "grass":
-          backGround = "var(--type-grass)";
+          backGround = "var(--type-grass)"
           break;
         case "ice":
-          backGround = "var(--type-ice)";
+          backGround = "var(--type-ice)"
           break;
         case "fighting":
-          backGround = "var(--type-fighting)";
+          backGround = "var(--type-fighting)"
           break;
         case "poison":
-          backGround = "var(--type-poison)";
+          backGround = "var(--type-poison)"
           break;
         case "ground":
-          backGround = "var(--type-ground)";
+          backGround = "var(--type-ground)"
           break;
         case "flying":
-          backGround = "var(--type-flying)";
+          backGround = "var(--type-flying)"
           break;
         case "psychic":
-          backGround = "var(--type-psychic)";
+          backGround = "var(--type-psychic)"
           break;
         case "bug":
-          backGround = "var(--type-bug)";
+          backGround = "var(--type-bug)"
           break;
         case "rock":
-          backGround = "var(--type-rock)";
+          backGround = "var(--type-rock)"
           break;
         case "ghost":
-          backGround = "var(--type-ghost)";
+          backGround = "var(--type-ghost)"
           break;
         case "dragon":
-          backGround = "var(--type-dragon)";
+          backGround = "var(--type-dragon)"
           break;
         default:
-          backGround = "var(--type-normal)"; // Cor padrão
+          backGround = "var(--type-normal)"
       }
 
     let data = `
@@ -161,7 +161,10 @@ async function changeLimit() {
     
 }
 
+async function procurarPokemon(pokemon) {
 
+    
+}
 
 window.onload =  () => {
     APILoad(offset,limit);
