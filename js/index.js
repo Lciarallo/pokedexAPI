@@ -22,10 +22,59 @@ function convertPokemonHTMl(pokemon, info, index) {
     for (let i = 0; i < info.types.length; i++) {
         tags.push(`<p class="tag">${info.types[i].type.name || ""}</p>`)
     }
-
+    let backGround
+    switch (info.types[0].type.name) {
+        case "normal":
+          backGround = "var(--type-normal)";
+          break;
+        case "fire":
+          backGround = "var(--type-fire)";
+          break;
+        case "water":
+          backGround = "var(--type-water)";
+          break;
+        case "electric":
+          backGround = "var(--type-electric)";
+          break;
+        case "grass":
+          backGround = "var(--type-grass)";
+          break;
+        case "ice":
+          backGround = "var(--type-ice)";
+          break;
+        case "fighting":
+          backGround = "var(--type-fighting)";
+          break;
+        case "poison":
+          backGround = "var(--type-poison)";
+          break;
+        case "ground":
+          backGround = "var(--type-ground)";
+          break;
+        case "flying":
+          backGround = "var(--type-flying)";
+          break;
+        case "psychic":
+          backGround = "var(--type-psychic)";
+          break;
+        case "bug":
+          backGround = "var(--type-bug)";
+          break;
+        case "rock":
+          backGround = "var(--type-rock)";
+          break;
+        case "ghost":
+          backGround = "var(--type-ghost)";
+          break;
+        case "dragon":
+          backGround = "var(--type-dragon)";
+          break;
+        default:
+          backGround = "var(--type-normal)"; // Cor padrão
+      }
 
     let data = `
-        <div class="cardPokemon" style="--index: ${index}">
+        <div class="cardPokemon" style="--index: ${index}; background: ${backGround} ">
             <h2 class="name">${pokemon.name}</h2>
             <img class="img" src="${img}" alt="" style="width: 100px">
             

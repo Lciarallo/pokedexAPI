@@ -5,6 +5,25 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Cores para tipos de Pokémon (1ª Geração) */
+  --type-normal: #A8A878;    /* Cinza esverdeado */
+  --type-fire: #F08030;      /* Laranja vibrante */
+  --type-water: #6890F0;     /* Azul médio */
+  --type-electric: #F8D030;  /* Amarelo dourado */
+  --type-grass: #78C850;     /* Verde folha */
+  --type-ice: #98D8D8;       /* Azul gelo */
+  --type-fighting: #C03028;  /* Vermelho terroso */
+  --type-poison: #A040A0;    /* Roxo médio */
+  --type-ground: #E0C068;    /* Marrom arenoso */
+  --type-flying: #A890F0;    /* Lavanda suave */
+  --type-psychic: #F85888;   /* Rosa vibrante */
+  --type-bug: #A8B820;       /* Verde oliva */
+  --type-rock: #B8A038;      /* Marrom rochoso */
+  --type-ghost: #705898;     /* Roxo profundo */
+  --type-dragon: #7038F8;    /* Azul royal */
+}
+
 body {
   background: linear-gradient(135deg, #f5f5f5 0%, #e8e8e8 100%);
   min-height: 100vh;
