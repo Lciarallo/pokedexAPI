@@ -25,7 +25,7 @@ function convertPokemonHTMl(pokemon, info, index) {
 
 
     let data = `
-        <div class="cardPokemon" style="--index: ${index}>
+        <div class="cardPokemon" style="--index: ${index}">
             <h2 class="name">${pokemon.name}</h2>
             <img class="img" src="${img}" alt="" style="width: 100px">
             
