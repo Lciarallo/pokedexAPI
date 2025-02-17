@@ -166,6 +166,10 @@ async function procurarPokemon(pokemon) {
     
 }
 
+async function detalhes() {
+    
+}
+
 window.onload =  () => {
     APILoad(offset,limit);
 }

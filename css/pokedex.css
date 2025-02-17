@@ -68,7 +68,7 @@ h1 {
   from {
     opacity: 0;
     transform: translateY(10000px);
-    animation-delay: 1000s;
+    animation-delay: 700s;
   }
   to {
     opacity: 1;
@@ -91,7 +91,7 @@ h1 {
   flex-direction: column;
   opacity: 0;
   animation: fadeInUp 0.6s ease-out forwards;
-  animation-delay: calc(var(--index) * 0.1s);
+  animation-delay: calc(var(--index) * 0.07s);
   will-change: transform, opacity;
 }
 
